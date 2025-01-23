@@ -1,0 +1,91 @@
+Bootheractive - Interactive Booth (Art Installation) ✅
+Designer
+03.007 - Design Thinking and Innovation
+- Category: Others
+- LD: https://asd.courses.sutd.edu.sg/dti-teams/cohort-9-group-6-part-4/
+- GR: -
+- Canva: 
+1. https://www.canva.com/design/DAE8WGfUtuA/xAttewwLgazG5x8yxIoOgA/edit?utm_content=DAE8WGfUtuA&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+2. https://www.canva.com/design/DAE9L0HyP6E/NT5IFv3Xo5PYm5VtuVPjtA/edit?utm_content=DAE9L0HyP6E&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+3. https://www.canva.com/design/DAE9sSIKAWk/hi_G-2s0syGLjQyi-_dpRg/edit?utm_content=DAE9sSIKAWk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+4. https://www.canva.com/design/DAE8XJHkkO8/Ak8Y-YQZ--DO_WtyQ-x9hg/edit?utm_content=DAE8XJHkkO8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+5. https://www.canva.com/design/DAE9kVsL8X4/ef9rI2ChDphEsoaODyIVeg/edit?utm_content=DAE9kVsL8X4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+6. https://www.canva.com/design/DAE9kOQu6Lw/Yt2LqobFm47VmeqkIxw0kQ/edit?utm_content=DAE9kOQu6Lw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+7. https://www.canva.com/design/DAE-RDPBCDk/gr2rRpJSpaxgIE7kul58Jw/edit?utm_content=DAE-RDPBCDk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
+
+Food Security Prediction (Multiple Linear Regression) ✅
+ML Engineer
+10.020 - Data Driven World
+- Category: Machine Learning
+- LD: -
+- GR: https://github.com/verneylmavt/regression-food_security-py
+- Canva: -
+
+
+Digital Trails - Smart Tour Guide (Android App) ✅
+Back-End Developer
+50.001 - Intro to Information System & Program
+- Category: App
+- LD: https://youtu.be/REjeYuMzRts
+- GR:
+1. https://github.com/nigelpoh/Digital-Trails-Backend
+2. https://github.com/nigelpoh/Digital-Trail-App
+- Canva:
+1. https://www.canva.com/design/DAFfrtu8R7s/uGroURz2CfTrOj5oPgwwog/edit?utm_content=DAFfrtu8R7s&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+2. https://www.canva.com/design/DAFfo5y5g-k/Cx2GfGqxBdz2yzHxMIlCDw/edit?utm_content=DAFfo5y5g-k&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
+
+4/5 Mind Games - Electronic Games (FPGA) 
+Developer
+50.002 - Computation Structures
+- Category: Others
+- LD: https://youtu.be/HKUN6bI3qzg
+- GR: https://github.com/50002-computation-structures/5Heads
+- Canva: https://www.canva.com/design/DAFf6AkH4tg/UJ2UtHMprFqmGXGjToL9Gg/edit?utm_content=DAFf6AkH4tg&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
+
+X - Invoice Management System (Web App) ✅
+Full-Stack Developer
+50.003 - Software Construction
+- Category: App
+- LD: https://youtu.be/ZvkS2uVExVo
+- GR: https://github.com/DeProfessorA/construct-software-wow
+- Canva: -
+
+
+Text Analysis (Hidden Markov Model) ✅
+ML Engineer
+50.007 - Machine Learning
+- Category: Machine Learning
+- LD: -
+- GR: https://github.com/verneylmavt/hmm-text_analysis-py
+- Canva: -
+
+
+Sentiment Analysis (Deep Neural Network) ✅
+ML Engineer
+50.040 - Natural Language Processing
+- Category: Machine Learning
+- LD: -
+- GR: https://github.com/T2LIPthedeveloper/50.040-NLP-Final-Project
+- Canva: -
+
+
+FindMyCar - Smart Parking Management System (Web App) ✅
+Back-End Developer
+50.046 - Cloud Computing and IoT
+- Category: App
+- LD: <TBD>
+- GR: https://github.com/Collaboration95/FindMyCar_50.046
+- Canva:
+1. https://www.canva.com/design/DAGVypf4Q38/_Ov7MAHb9wQACeb2BtRuuw/edit?utm_content=DAGVypf4Q38&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+2. https://www.canva.com/design/DAGYOJIdMMw/4FhiasXALQp2cFnuBsqe_g/edit?utm_content=DAGYOJIdMMw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
+
+
+
+
+
+
+
