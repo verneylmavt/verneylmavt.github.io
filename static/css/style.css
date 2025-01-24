@@ -741,8 +741,21 @@ main {
   color: var(--light-gray);
   font-weight: var(--fw-300);
   line-height: 1.6;
+  margin-bottom: 5px;
 }
 
+.timeline-text-list {
+  /* list-style: circle inside;
+  list-style-type: circle !important; */
+  color: var(--light-gray); /* Text color */
+  font-weight: var(--fw-300);
+  line-height: 1.6; /* Improve readability */
+  margin-left: 0px;
+}
+
+.timeline-text-list li {
+  margin-bottom: 2.5px; /* Space between items */
+}
 
 /**
  * skills 
@@ -1690,10 +1703,10 @@ main {
     font-weight: var(--fw-300);
   }
 
-  .separator:last-of-type {
+  /* .separator:last-of-type {
     margin: 15px 0;
     opacity: 0;
-  }
+  } */
 
   .social-list { justify-content: center; }
 
@@ -1704,5 +1717,6 @@ main {
 	 */
 
   .timeline-text { max-width: 700px; }
+  .timeline-text-list { max-width: 700px; }
 
 }
