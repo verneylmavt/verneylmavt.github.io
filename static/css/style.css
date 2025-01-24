@@ -44,7 +44,7 @@
     to right, 
     hsl(0, 100%, 70%),
     /* hsl(268, 53%, 40%) */
-    hsl(350, 100%, 62%)
+    hsl(0, 100%, 62%)
     /* hsl(258, 53%, 32%) */
   );
 
@@ -745,11 +745,9 @@ main {
 }
 
 .timeline-text-list {
-  /* list-style: circle inside;
-  list-style-type: circle !important; */
-  color: var(--light-gray); /* Text color */
+  color: var(--light-gray);
   font-weight: var(--fw-300);
-  line-height: 1.6; /* Improve readability */
+  line-height: 1.6;
   margin-left: 0px;
 }
 
