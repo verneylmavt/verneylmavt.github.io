@@ -713,6 +713,7 @@ main {
   color: var(--vegas-red);
   font-weight: var(--fw-400);
   line-height: 1.6;
+  /* margin-bottom: 5px; */
 }
 
 .timeline-item:not(:last-child)::before {
@@ -741,19 +742,47 @@ main {
   color: var(--light-gray);
   font-weight: var(--fw-300);
   line-height: 1.6;
-  margin-bottom: 5px;
+  margin-top: 8.75px;
+  margin-bottom: 2.5px;
 }
 
 .timeline-text-list {
   color: var(--light-gray);
   font-weight: var(--fw-300);
   line-height: 1.6;
-  margin-left: 0px;
+  margin-left: 10px;
+  /* list-style-type: disc; */
 }
 
 .timeline-text-list li {
   margin-bottom: 2.5px; /* Space between items */
 }
+
+.timeline-text-list li::marker {
+  color: var(--primary-color); /* Customize bullet color */
+  font-size: 1.2em; /* Make bullet larger */
+  content: '• '; /* Custom bullet symbol */
+}
+
+.timeline-text-list ul {
+  margin-top: 0px;
+  padding-left: 15px; /* Indentation for nested lists */
+  font-size: 13.5px;
+}
+
+.timeline-text-list ul li {
+  margin-bottom: 0px;
+}
+
+.timeline-text-list a {
+  color: inherit; /* Inherit the color from the parent element */
+  text-decoration: none; /* Remove underline */
+  font-weight: inherit; /* Inherit font weight from parent */
+}
+/* 
+.timeline-text-list a:hover {
+  color: var(--primary-color);
+} */
 
 /**
  * skills 
@@ -1714,7 +1743,8 @@ main {
 	 * RESUME
 	 */
 
-  .timeline-text { max-width: 700px; }
-  .timeline-text-list { max-width: 700px; }
+  .timeline-text { max-width: 725px; }
+  .timeline-text-list { max-width: 715px; }
+  /* .timeline-text-rcw { max-width: 700px; } */
 
 }
