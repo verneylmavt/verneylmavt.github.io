@@ -95,6 +95,14 @@ const projectItems = document.querySelectorAll(".project-item");
 
 projectItems.forEach(project => {
   // Select the eye icon element inside the project item
+
+  const cardLink = project.querySelector("a");
+
+  // block ANY navigation on click of the card
+  cardLink.addEventListener("click", e => {
+    e.preventDefault();
+  });
+  
   const eyeIcon = project.querySelector("[data-project-eye]");
   // console.log(eyeIcon)
 

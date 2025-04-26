@@ -906,7 +906,9 @@ main {
   #PORTFOLIO
 \*-----------------------------------*/
 
-.filter-list { display: none; }
+.filter-list { 
+  display: none; 
+}
 
 .filter-select-box {
   position: relative;
@@ -1014,7 +1016,7 @@ main {
 .project-item > a:hover .project-img::before { background: hsla(0, 0%, 0%, 0.5); }
 
 .project-item-icon-box {
-  --scale: 0.8;
+  --scale: 0.75;
 
   background: var(--jet);
   color: var(--orange-red-crayola);
@@ -1044,7 +1046,7 @@ main {
   transition: var(--transition-1);
 }
 
-.project-item > a:hover img { transform: scale(1.1); }
+.project-item > a:hover img { transform: scale(1.025); }
 
 .project-title,
 .project-category { margin-left: 10px; }
@@ -1085,7 +1087,7 @@ main {
 }
 
 .modal-links-project a:hover {
-  color: var(--primary-color);
+  color: hsl(0, 100%, 65%);
 }
 
 
@@ -1747,4 +1749,17 @@ main {
   .timeline-text-list { max-width: 715px; }
   /* .timeline-text-rcw { max-width: 700px; } */
 
+}
+
+
+/*======================================================================*/
+/*  OVERRIDES: always hide .filter-list under 768px (dropdown only)     */
+/*======================================================================*/
+@media (max-width: 767px) {
+  .filter-list {
+    display: none !important;
+  }
+  .filter-select-box {
+    display: block !important;
+  }
 }

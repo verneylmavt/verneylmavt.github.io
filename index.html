@@ -200,7 +200,7 @@
         <section class="about-text">
           <p>
             I'm a senior Computer Science and Design (CSD) student at Singapore University of Technology and Design (SUTD), 
-            specializing in back-end development and machine learning model development. I enjoy building scalable, efficient systems 
+            specializing in data science and machine learning model development. I enjoy building scalable, efficient systems 
             and applying data-driven insights to solve the problems. Beyond academics, I have a personal interest in finance and market.
             <br><br>
             If you'd like to know more about me and my work, feel free to reach out to me via email or connect with me on LinkedIn.
@@ -762,6 +762,54 @@
 
           <ul class="project-list">
 
+            <li class="project-item active" data-filter-item data-category="machine learning">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box" data-project-eye>
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/projects/50.055.png" alt="blood-sugar-prediction" loading="lazy">
+                </figure>
+                <h3 class="project-title">SUTD Chatbot</h3>
+                <p class="project-category">Machine Learning</p>
+                <p class="project-description" style="display: none;">
+                  <span style="font-weight: bold; display: block; text-align: center;">
+                    (50.055) Machine Learning Operations - 1D Project
+                  </span>
+
+                  This project "SUTD Chatbot" builds an SUTD-focused chatbot that first generates synthetic question–answer pairs on topics prospective students care about using Google Gemini, then fine-tunes a 1B-parameter Llama 3.2 model via LoRA-PEFT on those pairs. It scrapes official SUTD web pages and FAQs, cleans and splits the text into chunks, embeds them into a vector store, and implements retrieval-augmented generation pipelines—evaluating four configurations (base vs. fine-tuned, with vs. without RAG) on a curated question set. An automated LLM-as-judge evaluation is implemented at the end to score each configuration for accuracy, relevance, and groundedness.
+                </p>
+                <a class="project-demo" style="display: none;">
+                </a>
+                <a href=https://github.com/verneylmavt/sutd_5055mlop class="project-repo" style="display: none;">
+                </a>
+              </a>
+            </li>
+            
+            <li class="project-item active" data-filter-item data-category="machine learning">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box" data-project-eye>
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/projects/50.039.png" alt="blood-sugar-prediction" loading="lazy">
+                </figure>
+                <h3 class="project-title">Blood Sugar Prediction</h3>
+                <p class="project-category">Machine Learning</p>
+                <p class="project-description" style="display: none;">
+                  <span style="font-weight: bold; display: block; text-align: center;">
+                    (50.039) Theory and Practice of Deep Learning - 1D Project
+                  </span>
+
+                  This project "Blood Sugar Prediction" uses glucose monitor, heart rate, insulin and carbohydrate intake, total steps walked, and calories burnt—aggregated into five-minute intervals over a sliding six-hour window—to predict glucose levels one hour ahead (bg+1:00). Missing glucose and heart-rate readings are linearly interpolated (with row-mean fallback), while insulin, carbohydrate, steps, and calorie gaps are zero-filled and any residual NaNs forward-then backward-filled. For training, small Gaussian noise (1% of each feature’s standard deviation) augments the dataset, and only the most recent 24 time steps of each of the six sensor channels (i.e., two hours of data) are retained. Finally, all features and the target glucose value are standardized to zero mean and unit variance. A two-block Temporal Convolutional Network then processes each sample as a 24×6 sequence: each block applies dilated 1D convolutions with chomp layers and residual connections to extract temporal features, ending in a linear layer that outputs a single glucose prediction. The model is trained with MSE loss, Adam optimization, and early stopping, using an 80/10/10 split for training, validation, and testing. Predictions are evaluated with RMSE, MAE, MARD, MBE, MAPE and Pearson’s r.
+                </p>
+                <a href=https://g20-blood-sugar-spike-prediction.streamlit.app/ class="project-demo" style="display: none;">
+                </a>
+                <a href=https://github.com/verneylmavt/st-blood-sugar-spike-prediction class="project-repo" style="display: none;">
+                </a>
+              </a>
+            </li>
+            
             <li class="project-item active" data-filter-item data-category="web app">
               <a href="#">
                 <figure class="project-img">
@@ -770,17 +818,18 @@
                   </div>
                   <img src="./assets/projects/01.400-01.401.png" alt="cargo-management-system" loading="lazy">
                 </figure>
-                <h3 class="project-title">Cargo Management System</h3>
+                <h3 class="project-title">OOG Navigator - Cargo Management System</h3>
                 <p class="project-category">Web App</p>
                 <p class="project-description" style="display: none;">
                   <span style="font-weight: bold; display: block; text-align: center;">
-                  (01.400/01.401) Capstone - Final Year Project
+                  (01.400/01.401) Capstone Final Year Project
                   </span>
 
-                  A cargo management app, developed in collaboration with DB Schenker, 
-                  to improve the efficiency of the planning process for out-of-gauge cargo (OOG).
+                  Project "OOG Navigator" is an AI-powered WebApp designed to streamline and 
+                  automate the management of Out of Gauge (OOG) cargo by integrating advanced technical features and 
+                  establishing a centralized database, providing a seamless all-in-one solution for DB Schenker.
                 </p>
-                <a class="project-demo" style="display: none;">
+                <a href=https://capstoneshowcase.sutd.edu.sg/project/proj-23-schenker-out-of-gauge-cargo/ class="project-demo" style="display: none;">
                 </a>
                 <a class="project-repo" style="display: none;">
                 </a>
@@ -1224,7 +1273,7 @@
 
               <div class="modal-links-project">
                 <a href="#" class="demo-link" data-project-modal-demo target="_blank">
-                  <ion-icon name="share-outline"></ion-icon> Live Demo
+                  <ion-icon name="share-outline"></ion-icon> Demo
                 </a>
                 <a href="#" class="repo-link" data-project-modal-repo target="_blank">
                   <ion-icon name="logo-github"></ion-icon> GitHub Repo
