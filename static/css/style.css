@@ -846,8 +846,48 @@ main {
   font-size: var(--skills-icon-label-size, 0.75rem);
   color: var(--light-gray);
   text-align: center;
-} */
+}
 
+
+.cert-icon {
+  width: 125px;
+  height: 125px;
+}
+
+.certs-icon-item {
+  background: hsl(240, 1.6%, 12%);
+  background: var(--onyx);
+  padding: 15px;
+  border-radius: 10px;
+  flex: 1 1 140px;
+  max-width: 225px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: var(--skills-icon-shadow, 0 2px 6px rgba(0, 0, 0, 0.1));
+  transition: transform 0.2s ease;
+  margin-bottom: 10px;
+}
+
+
+.certs-icon-item:hover {
+  transform: translateY(-4px);
+}
+
+.cert-icon-container {
+  margin-bottom: 10px;
+}
+
+.cert-icon-container ion-icon {
+  font-size: var(--skills-icon-size, 40px);
+  color: var(--light-gray);
+}
+
+.cert-icon-label {
+  font-size: var(--skills-icon-label-size, 0.75rem);
+  color: var(--light-gray);
+  text-align: center;
+}
 
 /* .skills-title { margin-bottom: 15px; }
 
