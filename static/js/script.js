@@ -183,3 +183,52 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+
+(function typewriter() {
+  const targets = [
+    document.querySelector('.info-content .name[data-typer]'),
+    document.querySelector('.info-content .title[data-typer]')
+  ].filter(Boolean);
+
+  // If OS asks to reduce motion, render immediately.
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const speed = 75;     // ms per character
+  const pause = 400;    // ms pause between lines
+
+  function typeInto(el, text) {
+    return new Promise(resolve => {
+      if (reduceMotion) {
+        el.textContent = text;
+        return resolve();
+      }
+      el.classList.add('typing');
+      el.textContent = "";
+      let i = 0;
+      const timer = setInterval(() => {
+        el.textContent += text[i++];
+        if (i >= text.length) {
+          clearInterval(timer);
+          el.classList.remove('typing');
+          resolve();
+        }
+      }, speed);
+    });
+  }
+
+  async function run() {
+    for (const el of targets) {
+      const text = el.getAttribute('data-typer') || "";
+      await typeInto(el, text);
+      await new Promise(r => setTimeout(r, pause));
+    }
+  }
+
+  // Start after DOM is ready (your script likely runs at the end; this is safe either way)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
+  }
+})();
