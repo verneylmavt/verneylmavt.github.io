@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
   <meta charset="UTF-8">
@@ -18,6 +18,33 @@
   <!--
     - custom css link
   -->
+  <script>
+    (function () {
+      try {
+        var storageKey = 'preferred-theme';
+        var storedTheme = localStorage.getItem(storageKey);
+        if (storedTheme === 'light' || storedTheme === 'dark') {
+          document.documentElement.setAttribute('data-theme', storedTheme);
+          return;
+        }
+        if (window.matchMedia) {
+          var prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (prefersLight) {
+            document.documentElement.setAttribute('data-theme', 'light');
+            return;
+          }
+          if (prefersDark) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            return;
+          }
+        }
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } catch (error) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="./static/css/style.css">
 
   <!--
@@ -181,6 +208,16 @@
 
           <li class="navbar-item">
             <button class="navbar-link" data-nav-link>Project</button>
+          </li>
+
+          <li class="navbar-item navbar-item-toggle">
+            <button class="theme-toggle" type="button" data-theme-toggle role="switch" aria-label="Activate light mode" aria-checked="false" title="Toggle theme">
+              <span class="theme-toggle-track">
+                <ion-icon class="theme-icon theme-icon-sun" name="sunny-outline" aria-hidden="true"></ion-icon>
+                <ion-icon class="theme-icon theme-icon-moon" name="moon-outline" aria-hidden="true"></ion-icon>
+              </span>
+              <span class="theme-toggle-thumb" aria-hidden="true"></span>
+            </button>
           </li>
 
         </ul>
