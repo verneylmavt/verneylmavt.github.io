@@ -1,6 +1,98 @@
 'use strict';
 
 
+// theme toggle handling
+const rootElement = document.documentElement;
+const themeToggleBtn = document.querySelector("[data-theme-toggle]");
+const themeSequence = ["sunrise", "twilight", "aurora"];
+
+const safeGetStoredTheme = () => {
+  try {
+    return localStorage.getItem("preferred-theme");
+  } catch (error) {
+    return null;
+  }
+};
+
+const safeStoreTheme = (theme) => {
+  try {
+    localStorage.setItem("preferred-theme", theme);
+  } catch (error) {
+    // storage might be unavailable (e.g., privacy mode); ignore gracefully
+  }
+};
+
+const iconForTheme = (theme) => {
+  switch (theme) {
+    case "twilight":
+      return "moon-outline";
+    case "aurora":
+      return "planet-outline";
+    default:
+      return "sunny-outline";
+  }
+};
+
+const applyTheme = (theme) => {
+  const normalizedTheme = themeSequence.includes(theme) ? theme : themeSequence[0];
+  rootElement.setAttribute("data-theme", normalizedTheme);
+
+  if (themeToggleBtn) {
+    const iconElement = themeToggleBtn.querySelector("ion-icon");
+    if (iconElement) {
+      iconElement.setAttribute("name", iconForTheme(normalizedTheme));
+    }
+
+    const nextTheme =
+      themeSequence[(themeSequence.indexOf(normalizedTheme) + 1) % themeSequence.length];
+
+    themeToggleBtn.setAttribute("aria-label", `Switch to ${nextTheme} theme`);
+
+    const srText = themeToggleBtn.querySelector(".visually-hidden");
+    if (srText) {
+      srText.textContent = `Switch to ${nextTheme} theme`;
+    }
+  }
+};
+
+const resolvedInitialTheme = (() => {
+  const storedTheme = safeGetStoredTheme();
+  if (storedTheme && themeSequence.includes(storedTheme)) {
+    return storedTheme;
+  }
+  const prefersDark = window.matchMedia
+    ? window.matchMedia("(prefers-color-scheme: dark)").matches
+    : false;
+  if (prefersDark) {
+    return "twilight";
+  }
+  const currentTheme = rootElement.getAttribute("data-theme");
+  return themeSequence.includes(currentTheme) ? currentTheme : themeSequence[0];
+})();
+
+applyTheme(resolvedInitialTheme);
+
+if (themeToggleBtn) {
+  themeToggleBtn.addEventListener("click", () => {
+    const currentTheme = rootElement.getAttribute("data-theme") || themeSequence[0];
+    const currentIndex = themeSequence.indexOf(currentTheme);
+    const nextTheme = themeSequence[(currentIndex + 1) % themeSequence.length];
+    applyTheme(nextTheme);
+    safeStoreTheme(nextTheme);
+  });
+}
+
+if (window.matchMedia) {
+  const colorSchemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  colorSchemeQuery.addEventListener("change", (event) => {
+    const storedTheme = safeGetStoredTheme();
+    if (storedTheme) {
+      return;
+    }
+    applyTheme(event.matches ? "twilight" : "sunrise");
+  });
+}
+
 
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
@@ -84,80 +176,113 @@ const projectModalText = document.querySelector("[data-project-modal-text]");
 const projectModalRepo = document.querySelector("[data-project-modal-repo]");
 const projectModalDemo = document.querySelector("[data-project-modal-demo]");
 
-// Function to toggle project modal visibility
-function toggleProjectModal() {
-  projectModalContainer.classList.toggle("active");
-  projectOverlay.classList.toggle("active");
+if (projectModalContainer && projectModalContainer.parentElement !== document.body) {
+  document.body.appendChild(projectModalContainer);
 }
+
+let storedScrollTop = 0;
+
+const setBodyScrollLock = (shouldLock) => {
+  if (shouldLock) {
+    storedScrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    document.body.style.setProperty("--scrollbar-compensation", `${Math.max(scrollbarWidth, 0)}px`);
+    document.body.classList.add("modal-open");
+  } else {
+    document.body.classList.remove("modal-open");
+    document.body.style.removeProperty("--scrollbar-compensation");
+    window.scrollTo(0, storedScrollTop);
+  }
+};
+
+const openProjectModal = () => {
+  if (!projectModalContainer || !projectOverlay) {
+    return;
+  }
+  projectModalContainer.classList.add("active");
+  projectOverlay.classList.add("active");
+  projectModalContainer.scrollTop = 0;
+  setBodyScrollLock(true);
+};
+
+const closeProjectModal = () => {
+  if (!projectModalContainer || !projectOverlay) {
+    return;
+  }
+  projectModalContainer.classList.remove("active");
+  projectOverlay.classList.remove("active");
+  setBodyScrollLock(false);
+};
+
+const isProjectModalOpen = () =>
+  projectModalContainer && projectModalContainer.classList.contains("active");
 
 // Loop through each project item and set up the click event for the eye icon
 const projectItems = document.querySelectorAll(".project-item");
 
-projectItems.forEach(project => {
-  // Select the eye icon element inside the project item
-
+projectItems.forEach((project) => {
   const cardLink = project.querySelector("a");
-
-  // block ANY navigation on click of the card
-  cardLink.addEventListener("click", e => {
-    e.preventDefault();
-  });
-  
-  const eyeIcon = project.querySelector("[data-project-eye]");
-  // console.log(eyeIcon)
-
-  if (eyeIcon) {
-    eyeIcon.addEventListener("click", function (e) {
-      e.preventDefault(); // Prevent navigation if wrapped in an anchor
-      
-      // Get project data elements
-      const projectImgEl = project.querySelector("img");
-      const projectTitleEl = project.querySelector(".project-title");
-      const projectDescEl = project.querySelector(".project-description");
-      const projectRepoEl = project.querySelector(".project-repo");
-      const projectDemoEl = project.querySelector(".project-demo");
-      // projectDescEl.removeAttribute('style');
-
-      // Update modal content with project details
-      if (projectImgEl) {
-        projectModalImg.src = projectImgEl.src;
-        projectModalImg.alt = projectImgEl.alt || "Project image";
-      }
-      if (projectTitleEl) {
-        projectModalTitle.innerHTML = projectTitleEl.innerHTML;
-      }
-      if (projectDescEl) {
-        projectModalText.innerHTML = projectDescEl.innerHTML;
-      }
-
-      if (projectRepoEl.href) {
-        // console.log(projectRepoEl);
-        projectModalRepo.style.display = 'flex'
-        projectModalRepo.href = projectRepoEl.href;
-      }
-      else {
-        // projectModalRepo.removeAttribute('href');
-        projectModalRepo.style.display = 'none';
-      }
-
-      if (projectDemoEl.href) {
-        // console.log(projectDemoEl);
-        projectModalDemo.style.display = 'flex'
-        projectModalDemo.href = projectDemoEl.href;
-      }
-      else {
-        // projectModalDemo.removeAttribute('href');
-        projectModalDemo.style.display = 'none';
-      }
-      // Show the project modal
-      toggleProjectModal();
-    });
+  if (cardLink) {
+    cardLink.addEventListener("click", (event) => event.preventDefault());
   }
+
+  const eyeIcon = project.querySelector("[data-project-eye]");
+
+  if (!eyeIcon) {
+    return;
+  }
+
+  eyeIcon.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const projectImgEl = project.querySelector("img");
+    const projectTitleEl = project.querySelector(".project-title");
+    const projectDescEl = project.querySelector(".project-description");
+    const projectRepoEl = project.querySelector(".project-repo");
+    const projectDemoEl = project.querySelector(".project-demo");
+
+    if (projectImgEl) {
+      projectModalImg.src = projectImgEl.src;
+      projectModalImg.alt = projectImgEl.alt || "Project image";
+    }
+    if (projectTitleEl) {
+      projectModalTitle.innerHTML = projectTitleEl.innerHTML;
+    }
+    if (projectDescEl) {
+      projectModalText.innerHTML = projectDescEl.innerHTML;
+    }
+
+    if (projectRepoEl && projectRepoEl.href) {
+      projectModalRepo.style.display = "flex";
+      projectModalRepo.href = projectRepoEl.href;
+    } else {
+      projectModalRepo.style.display = "none";
+    }
+
+    if (projectDemoEl && projectDemoEl.href) {
+      projectModalDemo.style.display = "flex";
+      projectModalDemo.href = projectDemoEl.href;
+    } else {
+      projectModalDemo.style.display = "none";
+    }
+
+    openProjectModal();
+  });
 });
 
-// Set click events on the close button and overlay to hide the modal
-projectModalCloseBtn.addEventListener("click", toggleProjectModal);
-projectOverlay.addEventListener("click", toggleProjectModal);
+if (projectModalCloseBtn) {
+  projectModalCloseBtn.addEventListener("click", closeProjectModal);
+}
+
+if (projectOverlay) {
+  projectOverlay.addEventListener("click", closeProjectModal);
+}
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && isProjectModalOpen()) {
+    closeProjectModal();
+  }
+});
 
 
 
