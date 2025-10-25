@@ -363,7 +363,7 @@ article {
   color: var(--light-gray-70);
 }
 
-:root[data-theme="light"] .theme-toggle-thumb { transform: translateX(28px); }
+:root[data-theme="light"] .theme-toggle-thumb { transform: translateX(27.5px); }
 
 article { display: none; }
 
