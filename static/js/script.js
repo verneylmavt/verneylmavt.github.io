@@ -57,7 +57,7 @@ if (typeof themeMediaQuery.addEventListener === "function") {
 }
 
 if (themeToggleBtn) {
-  themeToggleBtn.title = "Toggle theme (Shift+Click to follow system preference)";
+  themeToggleBtn.title = "Toggle Theme";
   themeToggleBtn.addEventListener("click", (event) => {
     if (event.shiftKey) {
       try {
